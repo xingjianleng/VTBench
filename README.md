@@ -7,9 +7,6 @@
 
 This repository provides the official implementation of **VTBench**, a benchmark designed to evaluate the performance of **visual tokenizers (VTs)** in the context of **autoregressive (AR) image generation**. VTBench enables fine-grained analysis across three core tasks: **image reconstruction**, **detail preservation**, and **text preservation**, isolating the tokenizer's impact from the downstream generation model.
 
-
----
-
 ## Why VTBench?
 
 Recent AR models such as GPT-4o demonstrate impressive image generation quality, which we hypothesize is made possible by a **highly capable visual tokenizer**. However, most existing VTs significantly lag behind **continuous VAEs**, leading to:
@@ -20,7 +17,6 @@ Recent AR models such as GPT-4o demonstrate impressive image generation quality,
 
 VTBench isolates and evaluates VT quality, independent of the downstream model, using standardized tasks and metrics.
 
----
 
 ## Features
 
