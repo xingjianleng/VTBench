@@ -33,6 +33,8 @@ VTBench isolates and evaluates VT quality, independent of the downstream model, 
 - Includes baselines from **continuous VAEs** (e.g., SD3.5L, FLUX.1) and GPT-4o.
 - Metrics: PSNR, SSIM, LPIPS, FID, CER, WER
 
+![Overview of VTBench](./assets/overview.png)
+
 
 ## 🚀 Getting Started
 
