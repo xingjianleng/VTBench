@@ -2,7 +2,7 @@ numpy
 mup==1.0.0
 einops
 omegaconf
-lightning==2.2.0
+lightning==2.3.3
 piq
 python-Levenshtein
 verovio
