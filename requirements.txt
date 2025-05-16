@@ -1,0 +1,15 @@
+numpy
+mup==1.0.0
+einops
+omegaconf
+lightning==2.2.0
+piq
+python-Levenshtein
+verovio
+pytorch_fid
+transformers
+torch-fidelity
+accelerate
+datasets
+git+https://github.com/deepseek-ai/Janus.git
+diffusers
