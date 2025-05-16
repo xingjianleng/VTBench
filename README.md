@@ -78,6 +78,18 @@ pip install -r requirements.txt
 | `var_256`           | VAR-256           |
 | `var_512`           | VAR-512           |
 
+#### 📚 Dataset
+VTBench datasets are available on Hugging Face: https://huggingface.co/datasets/huaweilin/VTBench
+| Dataset Name                  | Split Name     |
+|------------------------------|----------------|
+| task1-imagenet               | val            |
+| task1-high-resolution        | test           |
+| task1-varying-resolution     | test           |
+| task2-detail-preservation    | test           |
+| task3-movie-posters          | test           |
+| task3-arxiv-abstracts        | test           |
+| task3-multilingual           | Chinese, Hindi, Japanese, Korean        |
+
 Run an experiment:
 ```
 accelerate launch --num_processes=1 main.py \
