@@ -1,9 +1,7 @@
 #!/bin/bash
 
 dataset_name_list=("task1-imagenet" "task1-high-resolution" "task1-varying-resolution" "task2-detail-preservation" "task3-movie-posters" "task3-arxiv-abstracts" "task3-multilingual_Chinese" "task3-multilingual_Hindi" "task3-multilingual_Japanese" "task3-multilingual_Korean")
-dataset_name_list=("task1-high-resolution" "task1-varying-resolution" "task2-detail-preservation" "task3-movie-posters" "task3-arxiv-abstracts" "task3-multilingual_Chinese" "task3-multilingual_Hindi" "task3-multilingual_Japanese" "task3-multilingual_Korean")
-# model_name_list=("chameleon" "llamagen-ds16" "llamagen-ds8" "flowmo_lo" "flowmo_hi" "open_magvit2" "titok_l32" "titok_b64" "titok_s128" "titok_bl64" "titok_bl128" "titok_sl256" "janus_pro_1b" "maskbit_18bit" "maskbit_16bit" "var_256" "var_512" "SD3.5L" "gpt4o" "llamagen-ds16-t2i" "infinity_d32" "infinity_d64" "bsqvit" "FLUX.1-dev")
-model_name_list=("chameleon")
+model_name_list=("chameleon" "llamagen-ds16" "llamagen-ds8" "flowmo_lo" "flowmo_hi" "open_magvit2" "titok_l32" "titok_b64" "titok_s128" "titok_bl64" "titok_bl128" "titok_sl256" "janus_pro_1b" "maskbit_18bit" "maskbit_16bit" "var_256" "var_512" "SD3.5L" "gpt4o" "llamagen-ds16-t2i" "infinity_d32" "infinity_d64" "bsqvit" "FLUX.1-dev")
 
 batch_size=1
 
@@ -80,7 +78,7 @@ do
 #       echo "Slurm not detected, running with bash..."
 #       bash ./submit.sh
 #     fi
-    echo "Slurm not detected, running with bash..."
+
     bash ./submit.sh
 
   done
