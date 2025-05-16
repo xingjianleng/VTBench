@@ -13,3 +13,4 @@ accelerate
 datasets
 git+https://github.com/deepseek-ai/Janus.git
 diffusers
+openai
