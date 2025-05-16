@@ -20,6 +20,8 @@ Recent AR models such as GPT-4o demonstrate impressive image generation quality,
 
 VTBench isolates and evaluates VT quality, independent of the downstream model, using standardized tasks and metrics.
 
+![Comparison of Different Models and Visual Tokenizers](/assets/comparison_of_generation.png)
+
 
 ## ✨ Features
 
