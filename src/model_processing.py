@@ -12,7 +12,7 @@ def get_model(model_name):
         "padding": False,
     }
     if model_name.lower() == "anole":
-        from src.vqgans.anole.anole import VQModel
+        from src.vqvaes.anole.anole import VQModel
 
         url = "https://huggingface.co/GAIR/Anole-7b-v0.1/resolve/main/tokenizer/vqgan.yaml"
         config = get_yaml_from_internet(url)
@@ -32,7 +32,7 @@ def get_model(model_name):
         }
 
     if model_name.lower() == "chameleon":
-        from src.vqgans.anole.anole import VQModel
+        from src.vqvaes.anole.anole import VQModel
 
         url = "https://huggingface.co/huaweilin/chameleon_vqvae/resolve/main/vqgan.yaml"
         config = get_yaml_from_internet(url)
@@ -93,7 +93,7 @@ def get_model(model_name):
         }
 
     elif model_name.lower() == "flowmo_lo":
-        from src.diffusions.flowmo.flowmo import build_model
+        from src.vqvaes.flowmo.flowmo import build_model
 
         yaml_url = "https://raw.githubusercontent.com/kylesargent/FlowMo/refs/heads/main/flowmo/configs/base.yaml"
         config = get_yaml_from_internet(yaml_url)
@@ -111,7 +111,7 @@ def get_model(model_name):
         }
 
     elif model_name.lower() == "flowmo_hi":
-        from src.diffusions.flowmo.flowmo import build_model
+        from src.vqvaes.flowmo.flowmo import build_model
 
         yaml_url = "https://raw.githubusercontent.com/kylesargent/FlowMo/refs/heads/main/flowmo/configs/base.yaml"
         config = get_yaml_from_internet(yaml_url)
@@ -130,7 +130,7 @@ def get_model(model_name):
         }
 
     elif model_name.lower() == "open_magvit2":
-        from src.vqgans.open_magvit2.open_magvit2 import VQModel
+        from src.vqvaes.open_magvit2.open_magvit2 import VQModel
 
         yaml_url = "https://raw.githubusercontent.com/TencentARC/SEED-Voken/refs/heads/main/configs/Open-MAGVIT2/gpu/imagenet_lfqgan_256_L.yaml"
         config = get_yaml_from_internet(yaml_url)
@@ -146,7 +146,7 @@ def get_model(model_name):
         }
 
     elif "maskbit" in model_name.lower():
-        from src.vqgans.maskbit.maskbit import ConvVQModel
+        from src.vqvaes.maskbit.maskbit import ConvVQModel
 
         if "16bit" in model_name.lower():
             yaml_url = "https://raw.githubusercontent.com/markweberdev/maskbit/refs/heads/main/configs/tokenizer/maskbit_tokenizer_16bit.yaml"
@@ -187,7 +187,7 @@ def get_model(model_name):
         }
 
     elif "titok" in model_name.lower():
-        from src.vqgans.titok.titok import TiTok
+        from src.vqvaes.titok.titok import TiTok
 
         ckpt_path = None
         if "bl64" in model_name.lower():
@@ -215,7 +215,7 @@ def get_model(model_name):
 
     elif "janus_pro" in model_name.lower():
         from janus.models import MultiModalityCausalLM
-        from src.vqgans.janus_pro.janus_pro import forward
+        from src.vqvaes.janus_pro.janus_pro import forward
         import types
 
         model = MultiModalityCausalLM.from_pretrained(
