@@ -35,6 +35,13 @@ VTBench isolates and evaluates VT quality, independent of the downstream model, 
 
 ![Overview of VTBench](./assets/overview.png)
 
+## 📑 Open-Source Plan
+- [ ] Huggingface Space Demo
+- [ ] VTBench arXiv Paper
+- [x] Evaluation Code
+- [x] Inference Code on Supported VTs
+- [x] VTBench Dataset
+
 
 ## 🚀 Getting Started
 
