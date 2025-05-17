@@ -1,16 +1,13 @@
 # VTBench: Evaluating Visual Tokenizers for Autoregressive Image Generation
 <div align="center">
   
-![Static Badge](https://img.shields.io/badge/VTBench-yellow?logoSize=4&label=%F0%9F%A4%97%20Dataset&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2Fhuaweilin%2FVTBench)&nbsp;
-![Static Badge](https://img.shields.io/badge/VTBench-%23157bf9?label=%F0%9F%A4%97%20Demo&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fspaces%2Fhuaweilin%2FVTBench)&nbsp;
-![Static Badge](https://img.shields.io/badge/huawei--lin%2FVTBench-blue?label=Code&labelColor=gray&link=https%3A%2F%2Fgithub.com%2Fhuawei-lin%2FVTBench%2Ftree%2Fmain)
+[![Static Badge](https://img.shields.io/badge/VTBench-yellow?logoSize=4&label=%F0%9F%A4%97%20Dataset&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2Fhuaweilin%2FVTBench)](https://huggingface.co/datasets/huaweilin/VTBench)&nbsp;
+[![Static Badge](https://img.shields.io/badge/VTBench-%23157bf9?label=%F0%9F%A4%97%20Demo&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fspaces%2Fhuaweilin%2FVTBench)](https://huggingface.co/spaces/huaweilin/VTBench)&nbsp;
+[![Static Badge](https://img.shields.io/badge/huawei--lin%2FVTBench-blue?label=Code&labelColor=gray&link=https%3A%2F%2Fgithub.com%2Fhuawei-lin%2FVTBench%2Ftree%2Fmain)](https://github.com/huawei-lin/VTBench/tree/main)
 
 
 </div>
 
-[[Dataset](https://huggingface.co/datasets/huaweilin/VTBench)] [[Demo](https://huggingface.co/spaces/huaweilin/VTBench)]
-
----
 
 This repository provides the official implementation of **VTBench**, a benchmark designed to evaluate the performance of **visual tokenizers (VTs)** in the context of **autoregressive (AR) image generation**. VTBench enables fine-grained analysis across three core tasks: **image reconstruction**, **detail preservation**, and **text preservation**, isolating the tokenizer's impact from the downstream generation model.
 
