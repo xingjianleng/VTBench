@@ -2,7 +2,10 @@
 <div align="center">
   
 ![Static Badge](https://img.shields.io/badge/VTBench-yellow?logoSize=4&label=%F0%9F%A4%97%20Dataset&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2Fhuaweilin%2FVTBench)&nbsp;
-![Static Badge](https://img.shields.io/badge/VTBench-%23157bf9?label=%F0%9F%A4%97%20Demo&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fspaces%2Fhuaweilin%2FVTBench)
+![Static Badge](https://img.shields.io/badge/VTBench-%23157bf9?label=%F0%9F%A4%97%20Demo&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fspaces%2Fhuaweilin%2FVTBench)&nbsp;
+![Static Badge](https://img.shields.io/badge/huawei--lin%2FVTBench-blue?label=Code&labelColor=gray&link=https%3A%2F%2Fgithub.com%2Fhuawei-lin%2FVTBench%2Ftree%2Fmain)
+
+
 
 
 </div>
