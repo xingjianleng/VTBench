@@ -1,7 +1,9 @@
 # VTBench: Evaluating Visual Tokenizers for Autoregressive Image Generation
 <div align="center">
   
-![Static Badge](https://img.shields.io/badge/VTBench-yellow?logoSize=4&label=%F0%9F%A4%97%20Dataset&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2Fhuaweilin%2FVTBench)
+![Static Badge](https://img.shields.io/badge/VTBench-yellow?logoSize=4&label=%F0%9F%A4%97%20Dataset&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2Fhuaweilin%2FVTBench)&nbsp;
+![Static Badge](https://img.shields.io/badge/VTBench-%23157bf9?label=%F0%9F%A4%97%20Demo&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fspaces%2Fhuaweilin%2FVTBench)
+
 
 </div>
 
@@ -36,7 +38,7 @@ VTBench isolates and evaluates VT quality, independent of the downstream model, 
 ![Overview of VTBench](./assets/overview.png)
 
 ## 📑 Open-Source Plan
-- [ ] Huggingface Space Demo
+- [ ] Huggingface Space Demo (Developing)
 - [ ] VTBench arXiv Paper
 - [x] Evaluation Code
 - [x] Inference Code on Supported VTs
