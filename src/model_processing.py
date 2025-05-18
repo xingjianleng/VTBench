@@ -11,7 +11,7 @@ def download_ckpt_yaml(model_path, model_name, ckpt_path, yaml_url=None):
         with open(save_path, 'wb') as f:
             f.write(response.content)
 
-    # os.makedirs(model_path, exist_ok=True)
+    os.makedirs(model_path, exist_ok=True)
     local_dir = os.path.join(model_path, model_name)
     os.makedirs(local_dir, exist_ok=True)
 
@@ -34,6 +34,7 @@ def download_ckpt_yaml(model_path, model_name, ckpt_path, yaml_url=None):
 
 def get_model(model_path, model_name):
     model = None
+    huggingface_token = os.environ.get("HUGGINGFACE_TOKEN", None)
     data_params = {
         "target_image_size": (512, 512),
         "lock_ratio": True,
@@ -253,7 +254,10 @@ def get_model(model_path, model_name):
         else:
             raise Exception(f"Unsupported model: {model_name}")
 
-        model = TiTok.from_pretrained(ckpt_path)
+        model = TiTok.from_pretrained(
+            ckpt_path,
+            token=huggingface_token
+        )
         data_params = {
             "target_image_size": (256, 256),
             "lock_ratio": True,
@@ -268,14 +272,15 @@ def get_model(model_path, model_name):
         import types
 
         model = MultiModalityCausalLM.from_pretrained(
-            "deepseek-ai/Janus-Pro-7B", trust_remote_code=True
+            "deepseek-ai/Janus-Pro-7B", trust_remote_code=True,
+            token=huggingface_token
         ).gen_vision_model
         model.forward = types.MethodType(forward, model)
         data_params = {
             "target_image_size": (384, 384),
             "lock_ratio": True,
-            "center_crop": False,
-            "padding": True,
+            "center_crop": True,
+            "padding": False,
         }
 
     elif "var" in model_name.lower():
@@ -302,8 +307,8 @@ def get_model(model_path, model_name):
                 (512, 512) if "512" in model_name.lower() else (256, 256)
             ),
             "lock_ratio": True,
-            "center_crop": False,
-            "padding": True,
+            "center_crop": True,
+            "padding": False,
             "standardize": False,
         }
 
@@ -344,8 +349,8 @@ def get_model(model_path, model_name):
         data_params = {
             "target_image_size": (1024, 1024),
             "lock_ratio": True,
-            "center_crop": False,
-            "padding": True,
+            "center_crop": True,
+            "padding": False,
             "standardize": False,
         }
 
@@ -355,14 +360,15 @@ def get_model(model_path, model_name):
         import types
 
         model = AutoencoderKL.from_pretrained(
-            "huaweilin/stable-diffusion-3.5-large-vae", subfolder="vae"
+            "huaweilin/stable-diffusion-3.5-large-vae", subfolder="vae",
+            token=huggingface_token
         )
         model.forward = types.MethodType(forward, model)
         data_params = {
             "target_image_size": (1024, 1024),
             "lock_ratio": True,
-            "center_crop": False,
-            "padding": True,
+            "center_crop": True,
+            "padding": False,
             "standardize": True,
         }
 
@@ -372,14 +378,15 @@ def get_model(model_path, model_name):
         import types
 
         model = AutoencoderKL.from_pretrained(
-            "black-forest-labs/FLUX.1-dev", subfolder="vae"
+            "black-forest-labs/FLUX.1-dev", subfolder="vae",
+            token=huggingface_token
         )
         model.forward = types.MethodType(forward, model)
         data_params = {
             "target_image_size": (1024, 1024),
             "lock_ratio": True,
-            "center_crop": False,
-            "padding": True,
+            "center_crop": True,
+            "padding": False,
             "standardize": True,
         }
 
@@ -389,8 +396,8 @@ def get_model(model_path, model_name):
         data_params = {
             "target_image_size": (1024, 1024),
             "lock_ratio": True,
-            "center_crop": False,
-            "padding": True,
+            "center_crop": True,
+            "padding": False,
             "standardize": False,
         }
         model = GPTImage(data_params)

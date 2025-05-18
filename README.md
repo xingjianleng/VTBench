@@ -27,6 +27,11 @@ VTBench isolates and evaluates VT quality, independent of the downstream model, 
 ![Comparison of Different Models and Visual Tokenizers](./assets/comparison_of_generation.png)
 
 
+## 🔥 News
+
+- **May 18, 2025:** We releases the demo on [huggingface space](https://huggingface.co/spaces/huaweilin/VTBench)! Pick your favorite image and try out over 20+ visual tokenizers.
+
+
 ## ✨ Features
 
 - Evaluation on **three tasks**:
@@ -40,7 +45,7 @@ VTBench isolates and evaluates VT quality, independent of the downstream model, 
 ![Overview of VTBench](./assets/overview.png)
 
 ## 📑 Open-Source Plan
-- [ ] Huggingface Space Demo (Developing)
+- [x] Huggingface Space Demo (Developing)
 - [ ] VTBench arXiv Paper
 - [x] Evaluation Code
 - [x] Inference Code on Supported VTs
