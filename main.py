@@ -20,6 +20,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_name", type=str, default="chameleon")
+parser.add_argument("--model_path", type=str, default=None)
 parser.add_argument("--dataset_name", type=str, default="task3-movie-posters")
 parser.add_argument("--split_name", type=str, default="test")
 parser.add_argument("--batch_size", default=8, type=int)
@@ -39,7 +40,7 @@ if accelerator.is_main_process and output_dir is not None:
     os.makedirs(f"{output_dir}/reconstructed_images", exist_ok=True)
     os.makedirs(f"{output_dir}/results", exist_ok=True)
 
-model, data_params = get_model(args.model_name)
+model, data_params = get_model(args.model_path, args.model_name)
 dataset = get_dataset(args.dataset_name, args.split_name, None if args.n_take <= 0 else args.n_take)
 data_collator = DataCollatorForSupervisedDataset(args.dataset_name, **data_params)
 dataloader = DataLoader(

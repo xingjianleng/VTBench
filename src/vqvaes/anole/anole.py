@@ -15,7 +15,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from ...utils import load_ckpt_from_internet
+from ...utils import get_ckpt
 
 
 class VectorQuantizer2(nn.Module):
@@ -613,7 +613,7 @@ class VQModel(nn.Module):
 
     def init_from_ckpt(self, path, ignore_keys=list()):
         if path.startswith("http://") or path.startswith("https://"):
-            sd = load_ckpt_from_internet(path)
+            sd = get_ckpt(path)
         else:
             print(f"Loading checkpoint from local path: {path}")
             sd = torch.load(path, map_location="cpu")["state_dict"]
