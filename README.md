@@ -13,6 +13,10 @@ This repository provides the official implementation of **VTBench**, a benchmark
 
 Our goal is to encourage the development of **strong, general-purpose open-source visual tokenizers** that can be reliably reused across autoregressive image generation and broader multimodal tasks.
 
+## 🔥 News
+
+- **May 18, 2025:** We releases the demo on [huggingface space](https://huggingface.co/spaces/huaweilin/VTBench)! Pick your favorite image and try out over 20+ visual tokenizers.
+
 
 ## 🔍 Why VTBench?
 
@@ -26,10 +30,6 @@ VTBench isolates and evaluates VT quality, independent of the downstream model, 
 
 ![Comparison of Different Models and Visual Tokenizers](./assets/comparison_of_generation.png)
 
-
-## 🔥 News
-
-- **May 18, 2025:** We releases the demo on [huggingface space](https://huggingface.co/spaces/huaweilin/VTBench)! Pick your favorite image and try out over 20+ visual tokenizers.
 
 
 ## ✨ Features
