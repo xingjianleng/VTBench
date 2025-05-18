@@ -1,19 +1,5 @@
 import os
 import spaces
-import subprocess
-import sys
-
-# REQUIREMENTS_FILE = "requirements.txt"
-# if os.path.exists(REQUIREMENTS_FILE):
-#     try:
-#         print("Installing dependencies from requirements.txt...")
-#         subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", REQUIREMENTS_FILE])
-#         print("Dependencies installed successfully.")
-#     except subprocess.CalledProcessError as e:
-#         print(f"Failed to install dependencies: {e}")
-# else:
-#     print("requirements.txt not found.")
-
 import gradio as gr
 from src.data_processing import pil_to_tensor, tensor_to_pil
 from PIL import Image
@@ -63,6 +49,8 @@ model_name_mapping = {
     "bsqvit": "BSQ-VIT",
 }
 
+display_to_internal = {v: k for k, v in model_name_mapping.items()}
+
 def load_model(model_name):
     model, data_params = get_model(MODEL_DIR, model_name)
     model = model.to(device)
@@ -77,16 +65,24 @@ model_dict = {
 placeholder_image = Image.new("RGBA", (512, 512), (0, 0, 0, 0))
 
 @spaces.GPU
-def process_selected_models(uploaded_image, selected_models):
+def process_selected_models(uploaded_image, selected_display_names):
+    if uploaded_image is None:
+        return [gr.update(value="⚠️  Please upload an image before processing.", visible=True)] + \
+               [gr.update() for _ in model_name_mapping]
+
+    if not selected_display_names:
+        return [gr.update(value="⚠️  Please select at least one model.", visible=True)] + \
+               [gr.update() for _ in model_name_mapping]
+
     selected_results = []
     placeholder_results = []
+
+    selected_internal = [display_to_internal[d] for d in selected_display_names]
 
     for model_name in model_name_mapping:
         label = model_name_mapping[model_name]
 
-        if uploaded_image is None:
-            result = gr.update(value=placeholder_image, label=f"{label} (No input)")
-        elif model_name in selected_models:
+        if model_name in selected_internal:
             try:
                 model, data_params = model_dict[model_name]
                 pixel_values = pil_to_tensor(uploaded_image, **data_params).unsqueeze(0).to(device)
@@ -101,11 +97,11 @@ def process_selected_models(uploaded_image, selected_models):
             result = gr.update(value=placeholder_image, label=f"{label} (Not selected)")
             placeholder_results.append(result)
 
-    return selected_results + placeholder_results
+    return [gr.update(visible=False)] + selected_results + placeholder_results
+
 
 with gr.Blocks() as demo:
     gr.Markdown("## VTBench")
-
     gr.Markdown("---")
 
     image_input = gr.Image(
@@ -132,18 +128,23 @@ with gr.Blocks() as demo:
                     def load_img():
                         return Image.open(p)
                     return load_img
-        
+
                 ex_img.select(fn=make_loader(), outputs=image_input)
 
     gr.Markdown("---")
-
     gr.Markdown("⚠️ **The more models you select, the longer the processing time will be.**")
+
+    display_names = list(model_name_mapping.values())
+    default_selected = ["SD3.5L", "Chameleon", "Janus Pro 1B/7B"]
+
     model_selector = gr.CheckboxGroup(
-        choices=list(model_name_mapping.keys()),
+        choices=display_names,
         label="Select models to run",
-        value=["SD3.5L", "chameleon", "janus_pro_1b"],
+        value=default_selected,
         interactive=True,
     )
+
+    status_output = gr.Markdown("", visible=False)
     run_button = gr.Button("Start Processing")
 
     image_outputs = []
@@ -164,10 +165,12 @@ with gr.Blocks() as demo:
                     )
                     image_outputs.append(out_img)
 
+
     run_button.click(
         fn=process_selected_models,
         inputs=[image_input, model_selector],
-        outputs=image_outputs
+        outputs=[status_output] + image_outputs
     )
 
 demo.launch()
+
