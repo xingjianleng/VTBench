@@ -11,14 +11,14 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Running on: {device}")
 
 MODEL_DIR = "./VTBench_models"
-if not os.path.exists(MODEL_DIR):
-    print("Downloading VTBench_models from Hugging Face...")
-    snapshot_download(
-        repo_id="huaweilin/VTBench_models",
-        local_dir=MODEL_DIR,
-        local_dir_use_symlinks=False
-    )
-    print("Download complete.")
+# if not os.path.exists(MODEL_DIR):
+#     print("Downloading VTBench_models from Hugging Face...")
+#     snapshot_download(
+#         repo_id="huaweilin/VTBench_models",
+#         local_dir=MODEL_DIR,
+#         local_dir_use_symlinks=False
+#     )
+#     print("Download complete.")
 
 example_image_paths = [f"assets/app_examples/{i}.png" for i in range(0, 5)]
 
@@ -57,10 +57,10 @@ def load_model(model_name):
     model.eval()
     return model, data_params
 
-model_dict = {
-    model_name: load_model(model_name)
-    for model_name in model_name_mapping
-}
+# model_dict = {
+#     model_name: load_model(model_name)
+#     for model_name in model_name_mapping
+# }
 
 placeholder_image = Image.new("RGBA", (512, 512), (0, 0, 0, 0))
 
@@ -84,10 +84,15 @@ def process_selected_models(uploaded_image, selected_display_names):
 
         if model_name in selected_internal:
             try:
-                model, data_params = model_dict[model_name]
+                model, data_params = load_model(model_name)
                 pixel_values = pil_to_tensor(uploaded_image, **data_params).unsqueeze(0).to(device)
-                output = model(pixel_values)[0]
+                with torch.no_grad():
+                    output = model(pixel_values)[0]
                 reconstructed_image = tensor_to_pil(output[0].cpu(), **data_params)
+
+                del model, pixel_values, output
+                torch.cuda.empty_cache()
+
                 result = gr.update(value=reconstructed_image, label=label)
             except Exception as e:
                 print(f"Error in model {model_name}: {e}")
@@ -103,6 +108,19 @@ def process_selected_models(uploaded_image, selected_display_names):
 with gr.Blocks() as demo:
     gr.Markdown("## VTBench")
     gr.Markdown("---")
+
+    gr.Markdown("👋 **Welcome to VTBench!** Upload an image, select models, and click 'Start Processing' to compare results side by side.")
+    with gr.Accordion("📘 Full Instructions", open=False):
+        gr.Markdown("""
+**VTBench User Guide**
+
+- **Upload an image** or click one of the example images.
+- **Select one or more models** from the list.
+- Click **Start Processing** to run inference.
+- Selected model outputs appear first, others show placeholders.
+
+⚠️ *Each model is downloaded on first use. Please wait patiently the first time you run a model.*
+""")
 
     image_input = gr.Image(
         type="pil",
@@ -133,6 +151,7 @@ with gr.Blocks() as demo:
 
     gr.Markdown("---")
     gr.Markdown("⚠️ **The more models you select, the longer the processing time will be.**")
+    gr.Markdown("*Note: Each model is downloaded on first use. Subsequent uses will load from cache and run faster.*")
 
     display_names = list(model_name_mapping.values())
     default_selected = ["SD3.5L", "Chameleon", "Janus Pro 1B/7B"]
