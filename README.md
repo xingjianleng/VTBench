@@ -15,7 +15,7 @@ Our goal is to encourage the development of **strong, general-purpose open-sourc
 
 ## 🔥 News
 
-- **May 18, 2025:** We releases the demo on [huggingface space](https://huggingface.co/spaces/huaweilin/VTBench)! Pick your favorite image and try out over 20+ visual tokenizers.
+- **May 18, 2025:** We released the demo on [huggingface space](https://huggingface.co/spaces/huaweilin/VTBench)! Pick your favorite image and try out over 20+ visual tokenizers.
 
 
 ## 🔍 Why VTBench?
