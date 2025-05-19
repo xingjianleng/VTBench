@@ -110,6 +110,7 @@ with gr.Blocks() as demo:
     gr.Markdown("---")
 
     gr.Markdown("👋 **Welcome to VTBench!** Upload an image, select models, and click 'Start Processing' to compare results side by side.")
+    gr.Markdown("🔗 **Check out our GitHub repo:** [https://github.com/huawei-lin/VTBench](https://github.com/huawei-lin/VTBench)")
     with gr.Accordion("📘 Full Instructions", open=False):
         gr.Markdown("""
 **VTBench User Guide**
