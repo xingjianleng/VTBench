@@ -43,6 +43,7 @@ VTBench isolates and evaluates VT quality, independent of the downstream model, 
 - Supports VTs from models like **FlowMo**, **MaskBiT**, **OpenMagViT2**, **VAR**, **BSQ-ViT**, etc.
 - Includes baselines from **continuous VAEs** (e.g., SD3.5L, FLUX.1) and GPT-4o.
 - Metrics: PSNR, SSIM, LPIPS, FID, CER, WER
+- ✅ **Automatic download of all datasets and models** -- no manual setup required.
 
 ![Overview of VTBench](./assets/overview.png)
 
@@ -70,6 +71,10 @@ pip install -r requirements.txt
 ```
 
 ### 3. Select a VT and Run Evaluation
+
+> ✅ **No Manual Downloads Needed**  
+All datasets and models are automatically downloaded during runtime from Hugging Face. You can directly run experiments without manually downloading any files.
+
 #### 📦 Model Zoo
 | Code Name           | Display Name      |
 | ------------------- | ----------------- |
