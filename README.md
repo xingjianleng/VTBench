@@ -162,5 +162,13 @@ For SLURM users, adapt `examples/submit.sh` accordingly and uncomment the SLURM 
 
 If you find this project useful, please consider citing:
 ```
-None
+@article{vtbench,
+  author       = {Huawei Lin and
+                  Jun Woo Chung and
+                  Yingjie Lao and
+                  Weijie Zhao},
+  title        = {VTBench: Evaluating Visual Tokenizers for Autoregressive Image Generation},
+  journal      = {arXiv preprint arXiv:2502.01634},
+  year         = {2025}
+}
 ```
