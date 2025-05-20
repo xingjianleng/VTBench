@@ -164,8 +164,8 @@ If you find this project useful, please consider citing:
 ```
 @article{vtbench,
   author       = {Huawei Lin and
-                  Jun Woo Chung and
-                  Yingjie Lao and
+                  Tong Geng and
+                  Zhaozhuo Xu and
                   Weijie Zhao},
   title        = {VTBench: Evaluating Visual Tokenizers for Autoregressive Image Generation},
   journal      = {arXiv preprint arXiv:2502.01634},
