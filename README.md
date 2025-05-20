@@ -17,7 +17,7 @@ Our goal is to encourage the development of **strong, general-purpose open-sourc
 
 ## 🔥 News
 
-- **May 19, 2025** Our paper is now available on arXiv! [Read it here](https://arxiv.org/abs/2505.13439)
+- **May 19, 2025:** Our paper is now available on arXiv! [Read it here](https://arxiv.org/abs/2505.13439)
 - **May 18, 2025:** We released the [demo on huggingface space](https://huggingface.co/spaces/huaweilin/VTBench)! Pick your favorite image and try out over 20+ visual tokenizers. [[link](https://huggingface.co/spaces/huaweilin/VTBench)]
 
 
