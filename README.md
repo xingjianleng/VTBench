@@ -4,7 +4,7 @@
 [![Static Badge](https://img.shields.io/badge/VTBench-yellow?logoSize=4&label=%F0%9F%A4%97%20Dataset&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2Fhuaweilin%2FVTBench)](https://huggingface.co/datasets/huaweilin/VTBench)&nbsp;
 [![Static Badge](https://img.shields.io/badge/VTBench-pink?label=%F0%9F%A4%97%20Demo&labelColor=gray&link=https%3A%2F%2Fhuggingface.co%2Fspaces%2Fhuaweilin%2FVTBench)](https://huggingface.co/spaces/huaweilin/VTBench)&nbsp;
 [![Static Badge](https://img.shields.io/badge/huawei--lin%2FVTBench-blue?label=Code&labelColor=gray&link=https%3A%2F%2Fgithub.com%2Fhuawei-lin%2FVTBench%2Ftree%2Fmain)](https://github.com/huawei-lin/VTBench/tree/main)&nbsp;
-![Static Badge](https://img.shields.io/badge/12345.123-red?label=arXiv%20Paper)
+[![Static Badge](https://img.shields.io/badge/2505.13439-red?label=arXiv%20Paper)](https://arxiv.org/abs/2505.13439)
 
 
 
@@ -17,6 +17,7 @@ Our goal is to encourage the development of **strong, general-purpose open-sourc
 
 ## 🔥 News
 
+- **May 19, 2025** Our paper is now available on arXiv! [Read it here](https://arxiv.org/abs/2505.13439)
 - **May 18, 2025:** We released the [demo on huggingface space](https://huggingface.co/spaces/huaweilin/VTBench)! Pick your favorite image and try out over 20+ visual tokenizers. [[link](https://huggingface.co/spaces/huaweilin/VTBench)]
 
 
