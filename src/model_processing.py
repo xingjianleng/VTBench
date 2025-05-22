@@ -354,13 +354,13 @@ def get_model(model_path, model_name):
             "standardize": False,
         }
 
-    elif "sd3.5l" in model_name.lower():  # SD3.5L
+    elif "sd3.5m" in model_name.lower():
         from src.vaes.stable_diffusion.vae import forward
         from diffusers import AutoencoderKL
         import types
 
         model = AutoencoderKL.from_pretrained(
-            "huaweilin/stable-diffusion-3.5-large-vae", subfolder="vae",
+            "stabilityai/stable-diffusion-3.5-medium", subfolder="vae",
             token=huggingface_token
         )
         model.forward = types.MethodType(forward, model)
@@ -372,7 +372,7 @@ def get_model(model_path, model_name):
             "standardize": True,
         }
 
-    elif "FLUX.1-dev".lower() in model_name.lower():  # SD3.5L
+    elif "FLUX.1-dev".lower() in model_name.lower():
         from src.vaes.stable_diffusion.vae import forward
         from diffusers import AutoencoderKL
         import types
@@ -401,6 +401,66 @@ def get_model(model_path, model_name):
             "standardize": False,
         }
         model = GPTImage(data_params)
+
+    elif "DC-AE".lower() in model_name.lower():
+        from src.vaes.stable_diffusion.vae import forward_dc
+        from diffusers import AutoencoderDC
+        import types
+
+        model = AutoencoderDC.from_pretrained(
+            "Efficient-Large-Model/SANA1.5_1.6B_1024px_diffusers", subfolder="vae",
+            token=huggingface_token
+        )
+        model.forward = types.MethodType(forward_dc, model)
+        data_params = {
+            "target_image_size": (1024, 1024),
+            "lock_ratio": True,
+            "center_crop": True,
+            "padding": False,
+            "standardize": True,
+        }
+
+    elif "SD-VAE".lower() in model_name.lower():
+        from src.vaes.autoencoder import vae_models
+        import torch
+        model = vae_models["f8d4"]().eval()
+        ckpt = torch.load("pretrained/sdvae/sdvae-f8d4.pt", map_location="cpu")
+        model.load_state_dict(ckpt)
+        data_params = {
+            "target_image_size": (1024, 1024),
+            "lock_ratio": True,
+            "center_crop": True,
+            "padding": False,
+            "standardize": True,
+        }
+
+    elif "VA-VAE".lower() in model_name.lower():
+        from src.vaes.autoencoder import vae_models
+        import torch
+        model = vae_models["f16d32"]().eval()
+        ckpt = torch.load("pretrained/vavae/vavae-f16d32.pt", map_location="cpu")
+        model.load_state_dict(ckpt)
+        data_params = {
+            "target_image_size": (1024, 1024),
+            "lock_ratio": True,
+            "center_crop": True,
+            "padding": False,
+            "standardize": True,
+        }
+
+    elif "E2E-VAE".lower() in model_name.lower():
+        from src.vaes.autoencoder import vae_models
+        import torch
+        model = vae_models["f16d32"]().eval()
+        ckpt = torch.load("pretrained/e2e-vavae/e2e-vavae-400k.pt", map_location="cpu")
+        model.load_state_dict(ckpt)
+        data_params = {
+            "target_image_size": (1024, 1024),
+            "lock_ratio": True,
+            "center_crop": True,
+            "padding": False,
+            "standardize": True,
+        }
 
     else:
         raise Exception(f"Unsupported model: \"{model_name}\"")

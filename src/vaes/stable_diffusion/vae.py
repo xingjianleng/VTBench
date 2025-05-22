@@ -21,3 +21,20 @@ def forward(
         z = posterior.mode()
     dec = self.decode(z).sample
     return dec, None, None
+
+
+def forward_dc(
+    self,
+    sample,
+    return_dict=True,
+):
+    r"""
+    Args:
+        sample (`torch.Tensor`): Input sample.
+        return_dict (`bool`, *optional*, defaults to `True`):
+            Whether or not to return a [`DecoderOutput`] instead of a plain tuple.
+    """
+    x = sample
+    z = self.encode(x).latent
+    dec = self.decode(z).sample
+    return dec

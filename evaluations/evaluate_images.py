@@ -2,6 +2,7 @@ import os
 import argparse
 from PIL import Image
 from tqdm import tqdm
+import pandas as pd
 from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
 import torch
@@ -100,6 +101,9 @@ def evaluate(args):
         print(f"{result:.4f}", end="\t")
     print()
 
+    metrics_df = pd.DataFrame({k: [v.compute().item()] for k, v in metrics.items()})
+    metrics_df.to_csv(os.path.join(args.output_dir, "metrics.csv"), index=False)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -111,6 +115,9 @@ if __name__ == "__main__":
         type=str,
         required=True,
         help="Path to reconstructed images",
+    )
+    parser.add_argument(
+        "--output_dir", type=str, required=True, help="Path to output directory"
     )
     parser.add_argument(
         "--metrics",
