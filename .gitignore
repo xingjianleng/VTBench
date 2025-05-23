@@ -1,3 +1,4 @@
 scripts*
 results*
+pretrained*
 **/__pycache__/**
